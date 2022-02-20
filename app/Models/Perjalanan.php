@@ -11,6 +11,7 @@ class Perjalanan extends Model{
     protected $fillable = [
         'id_user',
         'tanggal',
+        'jam',
         'lokasi',
         'suhu',
     ];

@@ -25,7 +25,8 @@ class PerjalananController extends Controller{
     public function simpanPerjalanan(Request $request){
         $data = [
             'id_user'=>1,
-            'tanggal'=>$request->datetime,
+            'tanggal'=>$request->date,
+            'jam'=>$request->jam,
             'lokasi'=>$request->lokasi,
             'suhu'=>$request->suhu
         ];
