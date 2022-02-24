@@ -12,9 +12,6 @@
           <li><a class="nav-link" href="/dashboard/daftar-data"><i class="fas fa-th-large"></i> <span>Daftar Data Perjalanan</span></a></li>
 
         <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
-          <a href="https://getstisla.com/docs" target="_blank" class="btn btn-primary btn-lg btn-block btn-icon-split">
-            <i class="fas fa-rocket"></i> Documentation
-          </a>
           <a href="https://github.com/aglerr/perjalanan-stisla" target="_blank" class="btn btn-primary btn-lg btn-block btn-icon-split">
             <i class="fab fa-github"></i> GitHub
           </a>
