@@ -15,7 +15,7 @@
           <a href="https://getstisla.com/docs" target="_blank" class="btn btn-primary btn-lg btn-block btn-icon-split">
             <i class="fas fa-rocket"></i> Documentation
           </a>
-          <a href="https://github.com/aglerr/latihan-stisla" target="_blank" class="btn btn-primary btn-lg btn-block btn-icon-split">
+          <a href="https://github.com/aglerr/perjalanan-stisla" target="_blank" class="btn btn-primary btn-lg btn-block btn-icon-split">
             <i class="fab fa-github"></i> GitHub
           </a>
         </div>
