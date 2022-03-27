@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Login &mdash; Stisla</title>
+    <title>Peduli Diri &mdash; Login</title>
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -26,34 +26,67 @@
             <div class="d-flex flex-wrap align-items-stretch">
                 <div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
                     <div class="p-4 m-3">
-                        <img src="../assets/img/stisla-fill.svg" alt="logo" width="80"
-                            class="shadow-light rounded-circle mb-5 mt-2">
-                        <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold">Peduli Diri</span>
+                        
+                        @if (session('registerSuccess'))
+                            <div class="alert alert-success alert-dismissible show fade">
+                                <div class="alert-body">
+                                    <button class="close" data-dismiss="alert">
+                                        <span>&times;</span>
+                                    </button>
+                                    Register Berhasil!
+                                </div>
+                            </div>
+                        @endif
+
+                        @if (session('logoutSuccess'))
+                        <div class="alert alert-success alert-dismissible show fade">
+                            <div class="alert-body">
+                                <button class="close" data-dismiss="alert">
+                                    <span>&times;</span>
+                                </button>
+                                Logout Berhasil!
+                            </div>
+                        </div>
+                        @endif
+
+                        @if (session('failLogin'))
+                            <div class="alert alert-danger alert-dismissible show fade">
+                                <div class="alert-body">
+                                    <button class="close" data-dismiss="alert">
+                                        <span>&times;</span>
+                                    </button>
+                                    Login Gagal! Silahkan coba lagi.
+                                </div>
+                            </div>
+                        @endif
+
+                        <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold">Peduli
+                                Diri</span>
                         </h4>
 
                         <p class="text-muted">Before you get started, you must login or <a
                                 href="/register">register</a> if you don't already have an account.</p>
 
-                        <form method="POST" action"{{ route('login') }}" class="needs-validation" novalidate="">
+                        <form method="POST" action="/postLogin" class="needs-validation" novalidate="">
                             @csrf
 
                             <div class="form-group">
-                                <label for="email">Email</label>
-                                <input id="email" type="email" class="form-control" name="email" tabindex="1" required
+                                <label for="email">NIK</label>
+                                <input id="email" type="text" class="form-control" name="email" tabindex="1" required
                                     autofocus>
+                                <input id="password" type="hidden" class="form-control" name="password" required>
                                 <div class="invalid-feedback">
-                                    Please fill in your email
+                                    Please fill in your NIK
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="d-block">
-                                    <label for="nik" class="control-label">NIK</label>
+                                    <label for="nama" class="control-label">Nama Lengkap</label>
                                 </div>
-                                <input id="nik" type="nik" class="form-control" name="nik" tabindex="2"
-                                    required>
+                                <input id="nama" type="text" class="form-control" name="nama" tabindex="2" required>
                                 <div class="invalid-feedback">
-                                    please fill in your password
+                                    Please fill in your full name
                                 </div>
                             </div>
 
@@ -66,11 +99,9 @@
                             </div>
 
                             <div class="form-group text-right">
-                                @if (Route::has('password.request'))
-                                    <a href="auth-forgot-password.html" class="float-left mt-3">
-                                        Forgot Password?
-                                    </a>
-                                @endif
+                                <a href="auth-forgot-password.html" class="float-left mt-3">
+                                    Forgot Password?
+                                </a>
                                 <button type="submit" class="btn btn-primary btn-lg btn-icon icon-right" tabindex="4">
                                     Login
                                 </button>
@@ -80,22 +111,30 @@
                     </div>
                 </div>
                 <div class="col-lg-8 col-12 order-lg-2 order-1 min-vh-100 background-walk-y position-relative overlay-gradient-bottom"
-                    data-background="../assets/img/unsplash/login-bg.jpg">
+                    data-background="../assets/img/login-bg.jpg">
                     <div class="absolute-bottom-left index-2">
                         <div class="text-light p-5 pb-2">
                             <div class="mb-5 pb-3">
                                 <h1 class="mb-2 display-4 font-weight-bold">Good Morning</h1>
                                 <h5 class="font-weight-normal text-muted-transparent">Bali, Indonesia</h5>
                             </div>
-                            Photo by <a class="text-light bb" target="_blank"
-                                href="https://unsplash.com/photos/a8lTjWJJgLA">Justin Kauffman</a> on <a
-                                class="text-light bb" target="_blank" href="https://unsplash.com">Unsplash</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
     </div>
+
+    <script>
+        window.onload = function() {
+            var src = document.getElementById("email"),
+                dst = document.getElementById("password");
+
+            src.addEventListener('input', function() {
+                dst.value = src.value;
+            });
+        }
+    </script>
 
     <!-- General JS Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -117,6 +156,7 @@
     <script src="../assets/js/custom.js"></script>
 
     <!-- Page Specific JS File -->
+
 </body>
 
 </html>
