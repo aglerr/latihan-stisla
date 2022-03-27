@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use DB;
 use App\Models\Perjalanan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PerjalananController extends Controller{
 
     public function index(){
-        /*if(is_null(auth()->user())){
+        if(is_null(auth()->user())){
             return redirect()->route('login');
-        }*/
+        }
 
         $data = DB::table('perjalanans')
         ->join('users', 'users.id', 'perjalanans.id_user')
         ->select('users.email', 'perjalanans.*')
-        ->where('users.id', '=', '1')
+        ->where('users.id', '=', auth()->user()->id)
         ->get();
 
         return view('pages.dashboard.data', ['data' => $data->reverse()]);
@@ -24,7 +24,7 @@ class PerjalananController extends Controller{
 
     public function simpanPerjalanan(Request $request){
         $data = [
-            'id_user'=>1,
+            'id_user'=>auth()->user()->id,
             'tanggal'=>$request->date,
             'jam'=>$request->jam,
             'lokasi'=>$request->lokasi,
