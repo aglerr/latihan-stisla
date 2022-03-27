@@ -59,6 +59,7 @@
             $('.table-paginate').DataTable();
         });
     </script>
+
 </body>
 
 </html>
